@@ -1,24 +1,18 @@
 package com.codingsignaltest.cloudDBStorage.level3;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class User {
     String userId;
     int capacity;
-    int used;
+    Set<File> files;
+    Set<File> backup;
 
-    public User(String userId,int capacity){
+    public User(String userId, int capacity) {
         this.userId = userId;
         this.capacity = capacity;
-        this.used = 0;
-    }
-
-    public int remainingCapacity(){
-        return capacity - used;
-    }
-    public void addUsage(int size) {
-        used+= size;
-    }
-
-    public void reduceUsage(int size) {
-        used -= size;
+        this.files = new HashSet<>();
+        this.backup = null;
     }
 }
