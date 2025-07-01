@@ -1,7 +1,7 @@
 package com.arraysInterview;
 
 import java.util.Arrays;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class ArrayPartition {
 
@@ -21,7 +21,7 @@ public class ArrayPartition {
         var arrayPartition = new ArrayPartition();
         var result = arrayPartition.arrayPairSum(new int[]{1,4,3,2});
         System.out.println("Result +:" +result);
-        assertEquals(4, result);
+      //  assertEquals(4, result);
         System.out.println();
     }
 }

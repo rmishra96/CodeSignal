@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class FileHostingService {
+public class
+
+FileHostingService {
     private static class File {
         private String name;
         private int size;
