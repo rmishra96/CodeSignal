@@ -17,7 +17,7 @@ package com.codingsignaltest.bankingsystem.level1;
 import java.util.HashMap;
 
 public class BankingSystem {
-    private HashMap<String, Integer> accounts;
+    private HashMap<String, Double> accounts;
 
     public BankingSystem(){
         accounts = new HashMap<>();
@@ -28,30 +28,37 @@ public class BankingSystem {
         if(accounts.containsKey(accountId)){
             return false; // Account already exists
         }
-        accounts.put(accountId,0);
+        accounts.put(accountId,0.0);
         return true;
     }
     // Deposit money into accountid, amount, timestamp
-    public String deposit(String timestamp, String accountId, int amount) {
+    public String deposit(String timestamp, String accountId, double amount) {
         if(!accounts.containsKey(accountId)) {
-            return "Account does not exist";
+            return "";
         }
-        int newBalance = accounts.get(accountId) + amount;
+
+        if (amount <= 0) {
+            return  String.valueOf(accounts.get(accountId));
+        }
+
+        double newBalance = accounts.get(accountId) + amount;
         accounts.put(accountId, newBalance);
         return "Deposit successful. New balance: " + newBalance;
     }
 
     // Pay <timestamp>, <accountId>, <amount>
-    public String pay(String timestamp, String accountId, int amount) {
+    public String pay(String timestamp, String accountId, double amount) {
        if(!accounts.containsKey(accountId)){
-           return "Account does not exist";
+           return "";
        }
-
-       int currentBalance = accounts.get(accountId);
+        if (amount <= 0) {
+            return  String.valueOf(accounts.get(accountId));
+        }
+       double currentBalance = accounts.get(accountId);
        if(currentBalance < amount) {
-           return "Insufficient funds";
+           return "";
        }
-       int newBalance = currentBalance - amount;
+        double newBalance = currentBalance - amount;
        accounts.put(accountId, newBalance);
        return String.valueOf(newBalance);
     }
